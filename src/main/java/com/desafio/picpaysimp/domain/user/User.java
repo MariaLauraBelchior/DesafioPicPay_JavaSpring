@@ -2,6 +2,8 @@ package com.desafio.picpaysimp.domain.user;
 
 import java.math.BigDecimal;
 
+import com.desafio.picpaysimp.dtos.UserDTO;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -26,7 +28,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String fistName;
+    private String firstName;
     private String lastName;
 
     @Column(unique = true)
@@ -39,4 +41,14 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     private UserType userType;
+
+    public User(UserDTO userDTO){
+        this.firstName = userDTO.firstName();
+        this.lastName = userDTO.lastName();
+        this.balance = userDTO.balance();
+        this.userType = userDTO.userType();
+        this.password = userDTO.password();
+        this.document = userDTO.document();
+        this.email = userDTO.email();
+    }
 }

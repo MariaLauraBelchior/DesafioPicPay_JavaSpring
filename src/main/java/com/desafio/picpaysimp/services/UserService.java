@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.desafio.picpaysimp.domain.user.User;
 import com.desafio.picpaysimp.domain.user.UserType;
+import com.desafio.picpaysimp.dtos.UserDTO;
 import com.desafio.picpaysimp.repositories.UserRepository;
 
 @Service
@@ -26,6 +27,12 @@ public class UserService {
 
     public User findUserById(Long id) throws Exception{
         return this.userRepository.findUserById(id).orElseThrow(() -> new Exception("Usuário não encontrado"));
+    }
+
+    public User createUser(UserDTO userDTO){
+        User newUser = new User(userDTO);
+        this.saveUser(newUser);
+        return newUser;
     }
 
     public void saveUser(User user){
