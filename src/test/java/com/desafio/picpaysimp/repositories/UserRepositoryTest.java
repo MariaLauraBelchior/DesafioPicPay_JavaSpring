@@ -14,7 +14,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.math.BigDecimal;
 import java.util.Optional;
 
-
 @DataJpaTest
 @ActiveProfiles("test")
 class UserRepositoryTest {
